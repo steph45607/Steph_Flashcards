@@ -1,4 +1,4 @@
-file = "/Users/steph/Desktop/Biodata.txt"
+file = "example/english.txt"
 with open(file, "r") as f:
 
     # To split lines and assign to a list

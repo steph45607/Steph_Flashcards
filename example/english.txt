@@ -1,13 +1,13 @@
-halo    hello
-selamat pagi    good morning
-makan   eat
-minum   drink
-jalan   walk
-bicara  talk
-berdiri stand
-lari    run
-lompat  jump
-merah   red
-biru    blue
-hijau   green
-kuning  yellow
+halo\hello
+selamat pagi\good morning
+makan\eat
+minum\drink
+jalan\walk
+bicara\talk
+berdiri\stand
+lari\run
+lompat\jump
+merah\red
+biru\blue
+hijau\green
+kuning\yellow

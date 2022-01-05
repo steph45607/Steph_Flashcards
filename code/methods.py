@@ -22,12 +22,12 @@ def createWithFile(frame):
 
 def addCard(front, back):
     global cards
-    cards.append([front, back])
+    cards.append([front.get(), back.get()])
 
 def finishAdd():
     with open("storage/cardStorage.txt", "a") as f:
         global cards
-        f.write(str(cards))
+        f.write(str(cards)+"\n")
     cards = []
 
 def readFile(file, frame):

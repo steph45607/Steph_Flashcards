@@ -36,10 +36,8 @@ def createCards(root):
     wordInput = Entry(root, width=20, textvariable=word).pack()
     descLbl = Label(root, text="Enter the description:").pack()
     descInput = Entry(root, width=20, textvariable=desc).pack()
-    addButton = Button(root, text = "+ add").pack()
-
-def addCard():
-
+    addButton = Button(root, text = "+ add", command=lambda: addCard(word, desc)).pack()
+    doneButton = Button(root, text = "Done creating", command=lambda: finishAdd()).pack()
 
 def learnCards(root,list):
     cleanPage(root)

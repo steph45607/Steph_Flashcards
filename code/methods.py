@@ -4,7 +4,8 @@ from main import *
 from tkinter import filedialog
 import os
 
-global cardList
+global cards
+cards = []
 
 def cardNaming(n, frame):
     name = n.get()
@@ -19,9 +20,15 @@ def createWithFile(frame):
     file = filedialog.askopenfilename(initialdir="/", title="Select existing file")
     readFile(file, frame)
 
-def cleanPage(root):
-    for widget in root.winfo_children(): # To know the widgets used in that page
-        widget.destroy() # To delete all the widgets with iteration
+def addCard(front, back):
+    global cards
+    cards.append([front, back])
+
+def finishAdd():
+    with open("storage/cardStorage.txt", "a") as f:
+        global cards
+        f.write(str(cards))
+    cards = []
 
 def readFile(file, frame):
     with open("storage/cardlist.txt", "a") as f:
@@ -37,7 +44,7 @@ def readFile(file, frame):
         for i in range(len(words)):
             words[i] = words[i].split("\\")
 
-        frames.learnCards(frame, words)
+    frames.learnCards(frame, words)
 
 def flip(list):
         global i
@@ -62,4 +69,14 @@ def prevWord(list):
         frames.learnCards.cardDis['text'] = list[i][0]
     else:
         i -= 1
-        frames.learnCards.cardDis['text'] = list[i][0]            
+        frames.learnCards.cardDis['text'] = list[i][0]
+
+
+
+
+
+
+
+def cleanPage(root):
+    for widget in root.winfo_children(): # To know the widgets used in that page
+        widget.destroy() # To delete all the widgets with iteration

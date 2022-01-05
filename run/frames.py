@@ -1,6 +1,6 @@
 from tkinter import *
 from main import *
-from code import cardNaming, cleanPage
+from code import cardNaming, cleanPage, createWithFile
 
 def init(root):
     global frame
@@ -23,6 +23,7 @@ def createName(root):
     cardName = StringVar()
     name = Entry(root, width=20, textvariable=cardName).pack()
     createButton = Button(root, text = "Create", command=lambda: cardNaming(cardName, root)).pack()
+    openButton = Button(root, text = "Open existing file", command=lambda:createWithFile(root)).pack()
 
 def createCards(root):
     cleanPage(root)
@@ -32,10 +33,31 @@ def createCards(root):
     descInput = Entry(root, width=20).pack()
     addButton = Button(root, text = "+ add").pack()
 
+def learnCards(root,words):
+    global i
+    i = 0
+    def flip(i):  
+        if(cardDis['text']==words[i][0]):
+            cardDis['text']=words[i][1]
+        else:
+            cardDis['text']=words[i][0]
     
+    def nextWord():
+        global i
+        global cardDis
 
+        if i == len(words):
+            i == 0
+        elif i % 2 == 0:
+            i + 1
+        else:
+            i + 2
+        
+        flip(i)
 
-    
-# root = Tk()
-# welcome(root)
-# root.mainloop()
+    cardDis = Button(root, text = words[i], command = flip(i))
+    cardDis.pack()
+
+    nextBtn = Button(root, text = "Next Word", command=lambda: nextWord(i))
+    nextBtn.pack()
+

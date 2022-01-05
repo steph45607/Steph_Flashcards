@@ -1,48 +1,48 @@
-# Ask for input
-# Use the input for the name of the deck
-# name.txt
-# add it to the list 
 from tkinter import *
 from frames import *
 from main import *
-
+from tkinter import filedialog
+import os
 
 global cardList
-cardList = []
 
 def cardNaming(n, frame):
     name = n.get()
-    cardList.append(name)
+
+    with open("storage/cardlist.txt", "a") as f:
+        f.write(name + "\n")
+
     global root
     frames.createCards(frame)
 
-def createDeck():
-    pass
+def createWithFile(frame):
+    file = filedialog.askopenfilename(initialdir="/", title="Select existing file")
+    readFile(file, frame)
 
 def cleanPage(root):
     for widget in root.winfo_children(): # To know the widgets used in that page
         widget.destroy() # To delete all the widgets with iteration
 
-def readFile():
-    file = "example/english.txt"
+def readFile(file, frame):
+    with open("storage/cardlist.txt", "a") as f:
+        f.write(os.path.splitext(os.path.basename(file))[0]+"\n")
+
     with open(file, "r") as f:
-
-        # To split lines and assign to a list
-        # With <word>\<word>
-        match = []
+        global words
+        words = []
         for i in f:
-            match.append(i)
-        # Remove \n from the end of the line
-        match = map(lambda s: s.strip(), match)
-
-        # To split every element inside the list by \
-        # Assign it to a list
-        words = [i.split("\\") for i in match]
-
-
-        # Change to dictionary
-        card = {}
+            i = i.replace("\n", "")
+            words.append(i)
+    
         for i in range(len(words)):
-            card[words[i][0]] = words[i][1]
+            words[i] = words[i].split("\\")
 
-        print(card)
+       
+        frames.learnCards(frame, words)
+
+def outputLearn(name):
+    for i in name/2:
+        if(cardDis['text']==name[i]):
+            cardDis['text']=name[i+1]
+        else:
+            cardDis['text']=name[i]

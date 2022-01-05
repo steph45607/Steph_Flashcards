@@ -37,12 +37,29 @@ def readFile(file, frame):
         for i in range(len(words)):
             words[i] = words[i].split("\\")
 
-       
         frames.learnCards(frame, words)
 
-def outputLearn(name):
-    for i in name/2:
-        if(cardDis['text']==name[i]):
-            cardDis['text']=name[i+1]
+def flip(list):
+        global i
+        if(frames.learnCards.cardDis['text']==list[i][0]):
+            frames.learnCards.cardDis['text']=list[i][1]
         else:
-            cardDis['text']=name[i]
+            frames.learnCards.cardDis['text']=list[i][0]
+    
+def nextWord(list):
+    global i
+    if i == (len(list)-1):
+        i = 0
+        frames.learnCards.cardDis['text'] = list[i][0]
+    else:
+        i += 1
+        frames.learnCards.cardDis['text'] = list[i][0]
+    
+def prevWord(list):
+    global i
+    if i == 0:
+        i = len(list)-1
+        frames.learnCards.cardDis['text'] = list[i][0]
+    else:
+        i -= 1
+        frames.learnCards.cardDis['text'] = list[i][0]            

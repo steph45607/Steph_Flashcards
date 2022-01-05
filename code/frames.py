@@ -1,6 +1,6 @@
 from tkinter import *
 from main import *
-from code import cardNaming, cleanPage, createWithFile
+from methods import *
 
 def init(root):
     global frame
@@ -27,37 +27,32 @@ def createName(root):
 
 def createCards(root):
     cleanPage(root)
-    word = Label(root, text="Enter the word:").pack()
-    wordInput = Entry(root, width = 20).pack()
-    desc = Label(root, text="Enter the description:").pack()
-    descInput = Entry(root, width=20).pack()
+    global word
+    word = StringVar()
+    global desc
+    desc = StringVar()
+
+    wordLbl = Label(root, text="Enter the word:").pack()
+    wordInput = Entry(root, width=20, textvariable=word).pack()
+    descLbl = Label(root, text="Enter the description:").pack()
+    descInput = Entry(root, width=20, textvariable=desc).pack()
     addButton = Button(root, text = "+ add").pack()
 
-def learnCards(root,words):
+def addCard():
+
+
+def learnCards(root,list):
+    cleanPage(root)
     global i
     i = 0
-    def flip(i):  
-        if(cardDis['text']==words[i][0]):
-            cardDis['text']=words[i][1]
-        else:
-            cardDis['text']=words[i][0]
-    
-    def nextWord():
-        global i
-        global cardDis
-
-        if i == len(words):
-            i == 0
-        elif i % 2 == 0:
-            i + 1
-        else:
-            i + 2
-        
-        flip(i)
-
-    cardDis = Button(root, text = words[i], command = flip(i))
+    cardDis = Button(root, text = list[i][0], command = lambda: flip(list))
     cardDis.pack()
 
-    nextBtn = Button(root, text = "Next Word", command=lambda: nextWord(i))
+    nextBtn = Button(root, text = "Next Word", command=lambda: nextWord(list))
     nextBtn.pack()
+
+    backBtn = Button(root, text = "Previous Word", command=lambda: prevWord(list))
+    backBtn.pack()
+
+        
 

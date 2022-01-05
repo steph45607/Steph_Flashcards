@@ -24,7 +24,7 @@ def main():
     root.geometry(f"{width}x{height}+{padW}+{padH}")
 
     # To fill in the window with widgets from frames.py
-    frames.init(root)
+    frames.createName(root)
 
     # To run the window
     root.mainloop()

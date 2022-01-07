@@ -11,6 +11,7 @@ def main():
     # Create tkinter root
     global root
     root = Tk()
+    root.config(bg="#35838B")
     root.title("FlashCard App")
 
     # Assign value of device screen size
@@ -23,6 +24,7 @@ def main():
 
     # Set the window size and position
     root.geometry(f"{width}x{height}+{padW}+{padH}")
+    root.resizable(False, False)
 
     # To fill in the window with widgets from frames.py
     frames.init(root)

@@ -1,10 +1,12 @@
-# from tkinter import *
-# from PIL import *
+from tkinter import *
+from PIL import *
 
-# root = Tk()
+root = Tk()
+root.config(bg = "blue")
 
-# # pic = PhotoImage(file = r"image/what.png")
-# # btn = Button(root, image= pic, height=40, width=60).pack(side = TOP)
+pic = PhotoImage(file = r"image/createBtn.png")
+btn = Button(root, image= pic, borderwidth=0)
+btn.pack(side = TOP)
 
 
 # def delete():
@@ -14,26 +16,4 @@
 # clear = Button(root, text = "clear", command=lambda: delete()).pack()
 
 
-# root.mainloop()
-
-#Import the required libraries
-from tkinter import *
-
-#Create an instance of tkinter frame
-win= Tk()
-
-#Set the geometry of frame
-win.geometry("650x250")
-
-#Define a function to clear the Entry Widget Content
-def clear_text():
-   text.delete(0, END)
-
-#Create a entry widget
-text= Entry(win, width=40)
-text.pack()
-
-#Create a button to clear the Entry Widget
-Button(win,text="Clear", command=clear_text, font=('Helvetica bold',10)).pack(pady=5)
-
-win.mainloop()
+root.mainloop()

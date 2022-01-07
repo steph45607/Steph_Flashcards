@@ -1,6 +1,14 @@
 from tkinter import *
 from main import *
 from methods import *
+from PIL import ImageTk, Image
+
+# Colors
+offWhite = "#FAF9F6"
+
+# Button images
+#imgStart = Image.open("image/startBtn.png")
+imgStart = ImageTk.PhotoImage(((Image.open("image/startBtn.png")).resize(50,100)))
 
 def init(root):
     global frame
@@ -9,8 +17,9 @@ def init(root):
 
 def welcome(root):
     cleanPage(root)
-    title = Label(root, text="Welcome to Flashcard App", bg="lightgreen",font=("Roboto", 48)).place(relx=.5, rely=.4, anchor="c")
-    startBtn = Button(root, text = "Start", padx=70, pady=20, font=("Roboto", 25), command=lambda:cardLib(root)).place(relx=.5, rely=.55, anchor="c")
+    inner = Frame(root, bg = offWhite, width=800, height=400).pack(padx=100, pady=100)
+    title = Label(root, text="Welcome to Flashcard App", bg=offWhite,font=("Roboto", 48)).place(relx=.5, rely=.4, anchor="c")
+    startBtn = Button(root,image=imgStart, padx=70, pady=20, font=("Roboto", 25), command=lambda:cardLib(root), border=0).place(relx=.5, rely=.55, anchor="c")
 
 def cardLib(root):
     cleanPage(root)

@@ -82,9 +82,9 @@ def finishAdd(frame):
     # Return user to card libarary page
     frames.cardLib(frame)
 
-def cancelMaking():
-    with open("storage/cardlist.txt","a") as f:
-        f.
+# def cancelMaking():
+#     with open("storage/cardlist.txt","a") as f:
+#         f.
 
 def readFile(file, frame):
     """

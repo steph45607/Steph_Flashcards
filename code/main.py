@@ -2,8 +2,9 @@ from tkinter import *
 import frames
 
 global root
+
 def main():
-    # Initial size variables
+    # Window size variables
     width = 1000
     height = 600
 

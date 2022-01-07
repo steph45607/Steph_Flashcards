@@ -1,32 +1,9 @@
-from tkinter import filedialog
-import os
+from tkinter import *
+from PIL import *
 
-def readFile():
-    file = "sample/notes.txt"
-    with open("storage/cardlist.txt", "a") as f:
-        f.write(os.path.splitext(os.path.basename(file))[0]+"\n")
+root = Tk()
 
-    with open(file, "r") as f:
-        
-        global words
-        words = []
-        for i in f:
-            i = i.replace("\n","")
-            words.append(i)
-    
-        for i in range(len(words)):
-            words[i] = words[i].split("\\")
+pic = PhotoImage(file = r"image/what.png")
+btn = Button(root, image= pic, height=40, width=60).pack(side = TOP)
 
-        
-
-        # frames.learnCards(frame, words)
-        print(words[0][0])
-        print(len(words))
-
-readFile()
-
-global words
-for i in range(len(words)):
-    print(words[i][0])
-    print(words[i][1])
-    print("next")
+root.mainloop()

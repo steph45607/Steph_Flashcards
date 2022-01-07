@@ -4,36 +4,86 @@ from main import *
 from tkinter import filedialog
 import os
 
+"""
+Temporary list, easier to append
+from user input
+"""
 global cards
 cards = []
 
+
 def cardNaming(n, frame):
+    """
+    Function to create
+    deck name from user input
+    """
+    # Get the name from Entry input
     name = n.get()
+    
+    # Won't allow user to create a card with empty name
+    if name == "":
+        error = Label(frame, text = "Can't be empty").pack()
+    else:
+        # Write the name into a cardlist file to store it
+        with open("storage/cardlist.txt", "a") as f:
+            f.write(name + "\n")
+        # Call to run the createCards frame
+        frames.createCards(frame)
 
-    with open("storage/cardlist.txt", "a") as f:
-        f.write(name + "\n")
-
-    global root
-    frames.createCards(frame)
 
 def createWithFile(frame):
+    """
+    Method to create card deck
+    from user's existing file
+    """
+    # Get file from path
     file = filedialog.askopenfilename(initialdir="/", title="Select existing file")
+    
+    # Call to run readFile method
     readFile(file, frame)
 
+
 def addCard(front, back):
+    """
+    Method to add one card to the list
+    from user input and file
+    """
     global cards
+
+    # Access global list and append value from user input to list
     cards.append([front.get(), back.get()])
+    
+    # Clean the entry box
+
+# def deleteEntry(word, desc):
+#     word.delete(0,"end")
+#     desc.delte(0,"end")
+
 
 def finishAdd():
+    """
+    Method to signal program that the user
+    finsih adding cards to deck
+    Will store list to cardStorage
+    """
     with open("storage/cardStorage.txt", "a") as f:
         global cards
+        # Write list to cardStorage file, change type to string
         f.write(str(cards)+"\n")
+    
+    # Assign empty list to cards, ready to use to make another deck
     cards = []
 
+
 def readFile(file, frame):
+    """
+    Method to read user's file
+    """
+    # Add the file name to cardlist file as card's deck name
     with open("storage/cardlist.txt", "a") as f:
         f.write(os.path.splitext(os.path.basename(file))[0]+"\n")
 
+    # Open the user file and change to list
     with open(file, "r") as f:
         global words
         words = []
@@ -43,17 +93,28 @@ def readFile(file, frame):
     
         for i in range(len(words)):
             words[i] = words[i].split("\\")
+    
+    # Add the list to cardStorage file
+    with open("storage/cardStorage.txt", "a") as f:
+        f.write(str(words))
+    # frames.learnCards(frame, words)
 
-    frames.learnCards(frame, words)
 
 def flip(list):
-        global i
-        if(frames.learnCards.cardDis['text']==list[i][0]):
-            frames.learnCards.cardDis['text']=list[i][1]
-        else:
-            frames.learnCards.cardDis['text']=list[i][0]
+    """
+    Method to flip card
+    Manipulate button text
+    """
+    global i
+    if(frames.learnCards.cardDis['text']==list[i][0]):
+        frames.learnCards.cardDis['text']=list[i][1]
+    else:
+        frames.learnCards.cardDis['text']=list[i][0]
     
 def nextWord(list):
+    """
+    Method to go to next word from list
+    """
     global i
     if i == (len(list)-1):
         i = 0
@@ -61,8 +122,12 @@ def nextWord(list):
     else:
         i += 1
         frames.learnCards.cardDis['text'] = list[i][0]
-    
+
+
 def prevWord(list):
+    """
+    Method to go to previous word from list
+    """
     global i
     if i == 0:
         i = len(list)-1
@@ -70,11 +135,6 @@ def prevWord(list):
     else:
         i -= 1
         frames.learnCards.cardDis['text'] = list[i][0]
-
-
-
-
-
 
 
 def cleanPage(root):

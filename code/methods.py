@@ -93,10 +93,10 @@ def readFile(file, frame):
     # Add the file name to cardlist file as card's deck name
     with open("storage/cardlist.txt", "a") as f:
         f.write(os.path.splitext(os.path.basename(file))[0]+"\n")
-
+    global words
     # Open the user file and change to list
     with open(file, "r") as f:
-        global words
+        # global words
         words = []
         for i in f:
             i = i.replace("\n", "")
@@ -108,7 +108,9 @@ def readFile(file, frame):
     # Add the list to cardStorage file
     with open("storage/cardStorage.txt", "a") as f:
         f.write(str(words))
-    # frames.learnCards(frame, words)
+
+    
+    frames.learnCards(frame, words)
 
 
 def flip(list):

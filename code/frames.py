@@ -4,6 +4,7 @@ from methods import *
 
 # Colors
 offWhite = "#FAF9F6"
+btnColor = "#072227"
 
 # Button images
 #imgStart = Image.open("image/startBtn.png")
@@ -18,14 +19,14 @@ def welcome(root):
     cleanPage(root)
     inner = Frame(root, bg = offWhite, width=800, height=400).pack(padx=100, pady=100)
     title = Label(root, text="Welcome to Flashcard App", bg=offWhite,font=("Roboto", 45)).place(relx=.5, rely=.5, anchor="c")
-    startBtn = Button(root,text="START", padx=70, pady=20, font=("Roboto", 25), command=lambda:cardLib(root), border=0, fg = "white",bg="#072227").place(relx=.5, rely=.845, anchor="c")
+    startBtn = Button(root,text="START", padx=70, pady=20, font=("Roboto", 25), command=lambda:cardLib(root), border=0, fg = "white",bg=btnColor).place(relx=.5, rely=.845, anchor="c")
 
 def cardLib(root):
     cleanPage(root)
     title = Label(root, text = "Card Library", font=('roboto', 30), bg=offWhite, ).place(relx=.5, rely=.2, anchor="c")
     hint = Label(root, text="Click card deck to learn").pack()
-    createBtn = Button(root, text = "+ create card set", command=lambda: createName(root)).place(relx=.5, rely=.55, anchor="c")
-    backBtn = Button(root, text = " < Back", command=lambda:welcome(root)).pack()
+    createBtn = Button(root, text = "+ create card set", command=lambda: createName(root), border=0, fg = "white",bg=btnColor).place(relx=.5, rely=.55, anchor="c")
+    backBtn = Button(root, text = " < Back", command=lambda:welcome(root), border=0, fg = "white",bg=btnColor).pack()
 
 def createName(root):
     cleanPage(root)
@@ -33,9 +34,9 @@ def createName(root):
     global cardName
     cardName = StringVar()
     name = Entry(root, width=20, textvariable=cardName).pack()
-    setBtn = Button(root, text = "Set Name", command=lambda: cardNaming(cardName, root)).pack()
-    openBtn = Button(root, text = "Open existing file", command=lambda:createWithFile(root)).pack()
-    backBtn = Button(root, text = " < Back", command=lambda:cardLib(root)).pack()
+    setBtn = Button(root, text = "Set Name", command=lambda: cardNaming(cardName, root), border=0, fg = "white",bg=btnColor).pack()
+    openBtn = Button(root, text = "Open existing file", command=lambda:createWithFile(root), border=0, fg = "white",bg=btnColor).pack()
+    backBtn = Button(root, text = " < Back", command=lambda:cardLib(root), border=0, fg = "white",bg=btnColor).pack()
 
 def createCards(root):
     cleanPage(root)

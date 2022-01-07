@@ -1,1 +1,2 @@
-[['name', 'nama'], ['age', 'umur']]
+[['steph', 'steph']]
+[['steph', 'steph'], ['steph', 'anya'], ['naem', 'brw'], ['sdfdfd', 'dfaf'], ['sdfsd', 'fasdf']][['steph', 'steph'], ['steph', 'anya'], ['naem', 'brw'], ['sdfdfd', 'dfaf'], ['sdfsd', 'fasdf']][['steph', 'steph'], ['steph', 'anya'], ['naem', 'brw'], ['sdfdfd', 'dfaf'], ['sdfsd', 'fasdf']][['steph', 'steph'], ['steph', 'anya'], ['naem', 'brw'], ['sdfdfd', 'dfaf'], ['sdfsd', 'fasdf']]

@@ -43,7 +43,7 @@ def createWithFile(frame):
     readFile(file, frame)
 
 
-def addCard(front, back):
+def addCard(front, back, wordInput, descInput):
     """
     Method to add one card to the list
     from user input and file
@@ -54,13 +54,18 @@ def addCard(front, back):
     cards.append([front.get(), back.get()])
     
     # Clean the entry box
+    deleteEntry(wordInput, descInput)
 
-# def deleteEntry(word, desc):
-#     word.delete(0,"end")
-#     desc.delte(0,"end")
+def deleteEntry(word, desc):
+    """
+    Method to clear the entry user input
+    in card making page after user add a pair
+    """
+    word.delete(0,END)
+    desc.delete(0,END)
 
 
-def finishAdd():
+def finishAdd(frame):
     """
     Method to signal program that the user
     finsih adding cards to deck
@@ -74,6 +79,12 @@ def finishAdd():
     # Assign empty list to cards, ready to use to make another deck
     cards = []
 
+    # Return user to card libarary page
+    frames.cardLib(frame)
+
+def cancelMaking():
+    with open("storage/cardlist.txt","a") as f:
+        f.
 
 def readFile(file, frame):
     """
@@ -138,5 +149,8 @@ def prevWord(list):
 
 
 def cleanPage(root):
+    """
+    Method to clean the window
+    """
     for widget in root.winfo_children(): # To know the widgets used in that page
         widget.destroy() # To delete all the widgets with iteration

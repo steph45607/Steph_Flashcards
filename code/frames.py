@@ -1,14 +1,13 @@
 from tkinter import *
 from main import *
 from methods import *
-from PIL import ImageTk, Image
 
 # Colors
 offWhite = "#FAF9F6"
 
 # Button images
 #imgStart = Image.open("image/startBtn.png")
-imgStart = ImageTk.PhotoImage(((Image.open("image/startBtn.png")).resize(50,100)))
+#imgStart = ImageTk.PhotoImage(((Image.open("image/startBtn.png")).resize(50,100)))
 
 def init(root):
     global frame
@@ -18,12 +17,12 @@ def init(root):
 def welcome(root):
     cleanPage(root)
     inner = Frame(root, bg = offWhite, width=800, height=400).pack(padx=100, pady=100)
-    title = Label(root, text="Welcome to Flashcard App", bg=offWhite,font=("Roboto", 48)).place(relx=.5, rely=.4, anchor="c")
-    startBtn = Button(root,image=imgStart, padx=70, pady=20, font=("Roboto", 25), command=lambda:cardLib(root), border=0).place(relx=.5, rely=.55, anchor="c")
+    title = Label(root, text="Welcome to Flashcard App", bg=offWhite,font=("Roboto", 45)).place(relx=.5, rely=.5, anchor="c")
+    startBtn = Button(root,text="START", padx=70, pady=20, font=("Roboto", 25), command=lambda:cardLib(root), border=0, fg = "white",bg="#072227").place(relx=.5, rely=.845, anchor="c")
 
 def cardLib(root):
     cleanPage(root)
-    title = Label(root, text = "Card Library", font=('roboto', 30), bg="lightgreen").place(relx=.5, rely=.2, anchor="c")
+    title = Label(root, text = "Card Library", font=('roboto', 30), bg=offWhite, ).place(relx=.5, rely=.2, anchor="c")
     hint = Label(root, text="Click card deck to learn").pack()
     createBtn = Button(root, text = "+ create card set", command=lambda: createName(root)).place(relx=.5, rely=.55, anchor="c")
     backBtn = Button(root, text = " < Back", command=lambda:welcome(root)).pack()

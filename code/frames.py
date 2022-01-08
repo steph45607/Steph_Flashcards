@@ -6,12 +6,6 @@ from methods import *
 offWhite = "#FAF9F6"
 btnColor = "#072227"
 
-# Button images
-#imgStart = Image.open("image/startBtn.png")
-#imgStart = ImageTk.PhotoImage(((Image.open("image/startBtn.png")).resize(50,100)))
-
-# Card variable
-
 def init(root):
     global frame
     frame = Frame(root).pack()

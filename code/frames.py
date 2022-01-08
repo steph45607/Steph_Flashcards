@@ -10,6 +10,8 @@ btnColor = "#072227"
 #imgStart = Image.open("image/startBtn.png")
 #imgStart = ImageTk.PhotoImage(((Image.open("image/startBtn.png")).resize(50,100)))
 
+# Card variable
+
 def init(root):
     global frame
     frame = Frame(root).pack()
@@ -57,13 +59,54 @@ def createCards(root):
 
 def learnCards(root,list):
     cleanPage(root)
+
     global i
     i = 0
-    cardDis = Button(root, text = list[i][0], command = lambda: flip(list))
+
+    global show
+    show = StringVar()
+    show.set(str(list[i][0]))
+
+    def flip(show,list):
+        """
+        Method to flip card
+        Manipulate button text
+        """
+        word = show.get()
+        if word == str(list[i][0]):
+            show.set(str(list[i][1]))
+        else:
+            show.set(str(list[i][0]))
+    
+    def nextWord(show,list):
+        """
+        Method to go to next word from list
+        """
+        global i
+        if i == (len(list)-1):
+            i = 0
+            show.set(str(list[i][0]))
+        else:
+            i += 1
+            show.set(str(list[i][0]))
+    
+    def prevWord(show,list):
+        """
+        Method to go to previous word from list
+        """
+        global i
+        if i == 0:
+            i = len(list)-1
+            show.set(str(list[i][0]))
+        else:
+            i -= 1
+            show.set(str(list[i][0]))
+
+    cardDis = Button(root,textvariable=show, command = lambda: flip(show,list))
     cardDis.pack()
 
-    nextBtn = Button(root, text = "Next Word", command=lambda: nextWord(list))
+    nextBtn = Button(root, text = "Next Word", command=lambda: nextWord(show,list))
     nextBtn.pack()
 
-    backBtn = Button(root, text = "Previous Word", command=lambda: prevWord(list))
+    backBtn = Button(root, text = "Previous Word", command=lambda: prevWord(show,list))
     backBtn.pack()

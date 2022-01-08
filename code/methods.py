@@ -93,10 +93,11 @@ def readFile(file, frame):
     # Add the file name to cardlist file as card's deck name
     with open("storage/cardlist.txt", "a") as f:
         f.write(os.path.splitext(os.path.basename(file))[0]+"\n")
-    global words
+
+    # global words
     # Open the user file and change to list
     with open(file, "r") as f:
-        # global words
+        global words
         words = []
         for i in f:
             i = i.replace("\n", "")
@@ -106,48 +107,11 @@ def readFile(file, frame):
             words[i] = words[i].split("\\")
     
     # Add the list to cardStorage file
-    with open("storage/cardStorage.txt", "a") as f:
-        f.write(str(words))
-
-    
+    # with open("storage/cardStorage.txt", "a") as f:
+    #     f.write(str(words))
     frames.learnCards(frame, words)
 
 
-def flip(list):
-    """
-    Method to flip card
-    Manipulate button text
-    """
-    global i
-    if(frames.learnCards.cardDis['text']==list[i][0]):
-        frames.learnCards.cardDis['text']=list[i][1]
-    else:
-        frames.learnCards.cardDis['text']=list[i][0]
-    
-def nextWord(list):
-    """
-    Method to go to next word from list
-    """
-    global i
-    if i == (len(list)-1):
-        i = 0
-        frames.learnCards.cardDis['text'] = list[i][0]
-    else:
-        i += 1
-        frames.learnCards.cardDis['text'] = list[i][0]
-
-
-def prevWord(list):
-    """
-    Method to go to previous word from list
-    """
-    global i
-    if i == 0:
-        i = len(list)-1
-        frames.learnCards.cardDis['text'] = list[i][0]
-    else:
-        i -= 1
-        frames.learnCards.cardDis['text'] = list[i][0]
 
 
 def cleanPage(root):

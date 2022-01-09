@@ -41,6 +41,7 @@ def createCards(root):
     word = StringVar()
     global desc
     desc = StringVar()
+    global cardName
 
     wordLbl = Label(root, text="Enter the word:").pack()
     wordInput = Entry(root, width=20, textvariable=word)

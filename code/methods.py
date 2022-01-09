@@ -22,7 +22,7 @@ def cardNaming(n, frame):
     
     # Won't allow user to create a card with empty name
     if name == "":
-        error = messagebox.showerror(title="Card Naming", message="Can't be empty")
+        error = messagebox.showerror(title="Card Naming", message="Name can't be empty")
     else:
         # Write the name into a cardlist file to store it
         with open("storage/cardlist.txt", "a") as f:
@@ -85,12 +85,15 @@ def finishAdd(frame):
 
 
 def deleteName(name):
+    name = name.get()+"\n"
+    print(name)
     with open("storage/cardlist.txt","r") as f:
         titles = f.readlines()
     with open("storage/cardlist.txt","w") as f:
         for title in titles:
-            if titles != name:
+            if title != name:
                 f.write(title)
+                print(title)
 
 def cancelCreate(frame, name):
     deleteName(name)

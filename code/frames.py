@@ -14,15 +14,16 @@ def init(root):
 def welcome(root):
     cleanPage(root)
     inner = Frame(root, bg = offWhite, width=800, height=400).pack(padx=100, pady=100)
-    title = Label(root, text="Welcome to Flashcard App", bg=offWhite,font=("Roboto", 45)).place(relx=.5, rely=.5, anchor="c")
-    startBtn = Button(root,text="START", padx=70, pady=20, font=("Roboto", 25), command=lambda:cardLib(root), border=0, fg = "white",bg=btnColor).place(relx=.5, rely=.845, anchor="c")
+    title = Label(root, text="Welcome to Flashcard App",font=("Roboto", 45), bg=offWhite).place(relx=.5, rely=.5, anchor=CENTER)
+    startBtn = Button(root,text="START", padx=70, pady=20, font=("Roboto", 25), command=lambda:cardLib(root), border=0).place(relx=.5, rely=.845, anchor=CENTER)
 
 def cardLib(root):
     cleanPage(root)
-    title = Label(root, text = "Card Library", font=('roboto', 30), bg=offWhite, ).place(relx=.5, rely=.2, anchor="c")
-    hint = Label(root, text="Click card deck to learn").pack()
-    createBtn = Button(root, text = "+ create card set", command=lambda: createName(root), border=0, fg = "white",bg=btnColor).place(relx=.5, rely=.55, anchor="c")
-    backBtn = Button(root, text = " < Back", command=lambda:welcome(root), border=0, fg = "white",bg=btnColor).pack()
+    title = Label(root, text = "Card Library", font=('Roboto', 30), bg= offWhite).grid(row=0, column=0,columnspan=5)#.place(relx=.5, rely=.2, anchor=CENTER)
+    hint = Label(root, text="Click card deck to learn").grid(row=1, column=0, columnspan=2)#.place(relx=.5, rely=0.3, anchor=CENTER)
+    createBtn = Button(root, text = "+ create card set", command=lambda: createName(root), border=0,).grid(row=2, column=0, columnspan=2)#.place(relx=.5, rely=.55, anchor=CENTER)
+    deckdummy = Button(root, text = "dummy deck").grid(row=3,column=0, columnspan=3, padx=20, pady=10)
+    backBtn = Button(root, text = " < Back", command=lambda:welcome(root), border=0).grid(row=6, column=5)#.pack()
 
 def createName(root):
     cleanPage(root)
@@ -30,9 +31,9 @@ def createName(root):
     global cardName
     cardName = StringVar()
     name = Entry(root, width=20, textvariable=cardName).pack()
-    setBtn = Button(root, text = "Set Name", command=lambda: cardNaming(cardName, root), border=0, fg = "white",bg=btnColor).pack()
-    openBtn = Button(root, text = "Open existing file", command=lambda:createWithFile(root), border=0, fg = "white",bg=btnColor).pack()
-    backBtn = Button(root, text = " < Back", command=lambda:cardLib(root), border=0, fg = "white",bg=btnColor).pack()
+    setBtn = Button(root, text = "Set Name", command=lambda: cardNaming(cardName, root), border=0).pack()
+    openBtn = Button(root, text = "Open existing file", command=lambda:createWithFile(root), border=0).pack()
+    backBtn = Button(root, text = " < Back", command=lambda:cardLib(root), border=0).pack()
 
 def createCards(root):
     cleanPage(root)
@@ -49,7 +50,7 @@ def createCards(root):
     descInput.pack()
     addBtn = Button(root, text = "+ add", command=lambda: addCard(word, desc, wordInput, descInput)).pack()
     doneBtn = Button(root, text = "Done creating", command=lambda: finishAdd(root)).pack()
-    cancelBtn = Button(root, text = "Cancel").pack()
+    cancelBtn = Button(root, text = "Cancel", command=lambda: cancelCreate(root, cardName)).pack()
 
 def learnCards(root,list):
     cleanPage(root)
@@ -57,7 +58,6 @@ def learnCards(root,list):
     global i
     i = 0
 
-    global show
     show = StringVar()
     show.set(str(list[i][0]))
 
@@ -104,3 +104,6 @@ def learnCards(root,list):
 
     backBtn = Button(root, text = "Previous Word", command=lambda: prevWord(show,list))
     backBtn.pack()
+
+    finishBtn = Button(root, text = "Finish learning", command=lambda:cardLib(root))
+    finishBtn.pack()

@@ -1,9 +1,2 @@
-global i
-i = 0
-
-def add():
-    global i
-    i += 2
-    return i
-
-print(add())
+with open("test.txt","a") as f:
+    print(f.readline)

@@ -1,7 +1,7 @@
 from tkinter import *
 from frames import *
 from main import *
-from tkinter import filedialog
+from tkinter import filedialog, messagebox
 import os
 
 """
@@ -22,7 +22,7 @@ def cardNaming(n, frame):
     
     # Won't allow user to create a card with empty name
     if name == "":
-        error = Label(frame, text = "Can't be empty").pack()
+        error = messagebox.showerror(title="Card Naming", message="Can't be empty")
     else:
         # Write the name into a cardlist file to store it
         with open("storage/cardlist.txt", "a") as f:
@@ -56,6 +56,7 @@ def addCard(front, back, wordInput, descInput):
     # Clean the entry box
     deleteEntry(wordInput, descInput)
 
+
 def deleteEntry(word, desc):
     """
     Method to clear the entry user input
@@ -82,9 +83,19 @@ def finishAdd(frame):
     # Return user to card libarary page
     frames.cardLib(frame)
 
-# def cancelMaking():
-#     with open("storage/cardlist.txt","a") as f:
-#         f.
+
+def deleteName(name):
+    with open("storage/cardlist.txt","r") as f:
+        titles = f.readlines()
+    with open("storage/cardlist.txt","w") as f:
+        for title in titles:
+            if titles != name:
+                f.write(title)
+
+def cancelCreate(frame, name):
+    deleteName(name)
+    cards = []
+    frames.cardLib(frame)
 
 def readFile(file, frame):
     """
@@ -94,7 +105,6 @@ def readFile(file, frame):
     with open("storage/cardlist.txt", "a") as f:
         f.write(os.path.splitext(os.path.basename(file))[0]+"\n")
 
-    # global words
     # Open the user file and change to list
     with open(file, "r") as f:
         global words
@@ -107,8 +117,10 @@ def readFile(file, frame):
             words[i] = words[i].split("\\")
     
     # Add the list to cardStorage file
-    # with open("storage/cardStorage.txt", "a") as f:
-    #     f.write(str(words))
+    with open("storage/cardStorage.txt", "a") as f:
+        f.write(str(words)+"\n")
+
+    # Will let the user to learn the cards once they add the file
     frames.learnCards(frame, words)
 
 

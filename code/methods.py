@@ -98,10 +98,12 @@ def deleteName(n):
                 f.write(title)
                 print(title)
 
+
 def cancelCreate(frame, name):
     deleteName(name)
     cards = []
     frames.cardLib(frame)
+
 
 def readFile(file, frame):
     """
@@ -130,6 +132,10 @@ def readFile(file, frame):
     frames.learnCards(frame, words)
 
 
+def loadCards(frame):
+    with open("storage/cardlist.txt") as f:
+        for name in f:
+            name = Button(frame, text = name, command=lambda:learnCards()).pack()
 
 
 def cleanPage(root):

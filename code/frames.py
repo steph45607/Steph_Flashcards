@@ -19,11 +19,11 @@ def welcome(root):
 
 def cardLib(root):
     cleanPage(root)
-    title = Label(root, text = "Card Library", font=('Roboto', 30), bg= offWhite).grid(row=0, column=0,columnspan=5)#.place(relx=.5, rely=.2, anchor=CENTER)
-    hint = Label(root, text="Click card deck to learn").grid(row=1, column=0, columnspan=2)#.place(relx=.5, rely=0.3, anchor=CENTER)
-    createBtn = Button(root, text = "+ create card set", command=lambda: createName(root), border=0,).grid(row=2, column=0, columnspan=2)#.place(relx=.5, rely=.55, anchor=CENTER)
-    deckdummy = Button(root, text = "dummy deck").grid(row=3,column=0, columnspan=3, padx=20, pady=10)
-    backBtn = Button(root, text = " < Back", command=lambda:welcome(root), border=0).grid(row=6, column=5)#.pack()
+    title = Label(root, text = "Card Library", font=('Roboto', 30), bg= offWhite).place(relx=.5, rely=.2, anchor=CENTER)
+    hint = Label(root, text="Click card deck to learn").place(relx=.5, rely=0.3, anchor=CENTER)
+    createBtn = Button(root, text = "+ create card set", command=lambda: createName(root), border=0,).place(relx=.5, rely=.55, anchor=CENTER)
+    loadCards(root)
+    backBtn = Button(root, text = " < Back", command=lambda:welcome(root), border=0).pack()
 
 def createName(root):
     cleanPage(root)

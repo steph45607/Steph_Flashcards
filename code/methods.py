@@ -89,14 +89,12 @@ def deleteName(n):
     Method to delete deck name from cardlist file
     """
     name = n.get()+"\n"
-    print(name)
     with open("storage/cardlist.txt","r") as f:
         titles = f.readlines()
     with open("storage/cardlist.txt","w") as f:
         for title in titles:
             if title != name:
                 f.write(title)
-                print(title)
 
 
 def cancelCreate(frame, name):
@@ -135,7 +133,7 @@ def readFile(file, frame):
 def loadCards(frame):
     with open("storage/cardlist.txt") as f:
         for name in f:
-            name = Button(frame, text = name, command=lambda:learnCards()).pack()
+            name = Button(frame, text = name).pack()
 
 
 def cleanPage(root):

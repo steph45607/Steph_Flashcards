@@ -84,8 +84,11 @@ def finishAdd(frame):
     frames.cardLib(frame)
 
 
-def deleteName(name):
-    name = name.get()+"\n"
+def deleteName(n):
+    """
+    Method to delete deck name from cardlist file
+    """
+    name = n.get()+"\n"
     print(name)
     with open("storage/cardlist.txt","r") as f:
         titles = f.readlines()

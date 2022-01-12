@@ -16,16 +16,16 @@ def init(root):
 def welcome(root):
     cleanPage(root)
     box = Frame(root, bg = offWhite, width=800, height=400).pack(padx=100, pady=100)
-    title = Label(box, text="Welcome to Flashcard App",font=("Roboto", 45), bg=offWhite).place(relx=.5, rely=.5, anchor=CENTER)
+    title = Label(root, text="Welcome to Flashcard App",font=("Roboto", 45), bg=offWhite).place(relx=.5, rely=.5, anchor=CENTER)
     startBtn = Button(root,text="START", padx=70, pady=20, font=("Roboto", 25), command=lambda:cardLib(root), border=0).place(relx=.5, rely=.845, anchor=CENTER)
 
 def cardLib(root):
     cleanPage(root)
-    box = Frame(root,width=800, height=400, bg=offWhite).pack(pady=100)
+    box2 = Frame(root,width=800, height=400).pack(pady=100, side=BOTTOM)
     title = Label(root, text = "Card Library", font=('Roboto', 45), bg= back).place(relx=.5, rely=.1, anchor=CENTER)
     hint = Label(root, text="Click card deck to learn").place(relx=.5, rely=0.2, anchor=CENTER)
     createBtn = Button(root, text = "+ Create", command=lambda: createName(root), border=0,).place(relx=.8, rely=.1, anchor=CENTER)
-    loadCards(box)
+    loadCards(box2)
     backBtn = Button(root, text = " < Back", command=lambda:welcome(root), border=0).place(relx=.2, rely=.1, anchor=CENTER)
 
 def createName(root):
@@ -101,14 +101,14 @@ def learnCards(root,list):
             i -= 1
             show.set(str(list[i][0]))
 
-    cardDis = Button(root,textvariable=show, command = lambda: flip(show,list))
-    cardDis.pack()
+    cardDis = Button(root,textvariable=show, font=("Roboto",30),command = lambda: flip(show,list), height=10, width=30)
+    cardDis.pack(pady=10)
 
     nextBtn = Button(root, text = "Next Word", command=lambda: nextWord(show,list))
-    nextBtn.pack()
+    nextBtn.place(relx=.7, rely=.7, anchor=CENTER)
 
     backBtn = Button(root, text = "Previous Word", command=lambda: prevWord(show,list))
-    backBtn.pack()
+    backBtn.place(relx=.3, rely=.7, anchor=CENTER)
 
     finishBtn = Button(root, text = "Finish learning", command=lambda:cardLib(root))
-    finishBtn.pack()
+    finishBtn.place(relx=.9, rely=.9, anchor=CENTER)

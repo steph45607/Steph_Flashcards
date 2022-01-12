@@ -3,6 +3,8 @@ from frames import *
 from main import *
 from tkinter import filedialog, messagebox
 import os
+from factory import *
+from ast import *
 
 """
 Temporary list, easier to append
@@ -99,7 +101,8 @@ def deleteName(n):
 
 def cancelCreate(frame, name):
     """
-    
+    Method to delete a created deck of cards
+
     """
     deleteName(name)
     cards = []
@@ -133,11 +136,18 @@ def readFile(file, frame):
     frames.learnCards(frame, words)
 
 
-def loadCards(frame):
-    # box2 = Frame(frame,width=800, height=400).pack(pady=100, side=BOTTOM)
-    with open("storage/cardlist.txt") as f:
-        for name in f:
-           name = Button(frame, text = name).pack()
+def loadCards(frame, frame2):
+    buttons = []
+    with open("storage/cardlist.txt") as lst, open("storage/cardstorage.txt") as strg:
+        name = lst.readlines()
+        words = strg.readlines()
+        for i in range(len(name)):
+            words[i] = literal_eval(words[i])
+            button = Deck(name[i], words[i])
+            buttons.append(button)
+    for this in buttons:
+        btn = Button(frame, text = this.getName(), command=lambda:frames.learnCards(frame2, this.getList())).pack(side=TOP, pady=5)
+            
 
 
 def cleanPage(root):

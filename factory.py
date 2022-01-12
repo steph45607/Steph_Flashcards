@@ -1,15 +1,15 @@
-from methods import *
-
+from ast import *
 class Deck():
     def __init__(self, name, list):
         self.__name = name
         self.__list = list
     
     def getName(self):
-        return self.__name
+        print(self.__name)
     
     def getList(self):
-        return self.__list
+        self.__list = literal_eval(self.__list)
+        print(self.__list)
 
     def setName(self, name):
         self.__name = name

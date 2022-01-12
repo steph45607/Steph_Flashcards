@@ -1,11 +1,14 @@
-from tkinter import *
+from typing import Literal
+from ast import *
+from factory import *
 
-root = Tk()
-
-box = Frame(root, width=100, height=100, bg="green").pack(side=TOP, padx=100)
-with open("test.txt","r") as f:
-    for row in f:
-        row = row.strip("\n")
-        row = Button(box, text = row).pack(side=TOP)
-
-root.mainloop()
+buttons = []
+with open("test.txt") as lst, open("test2.txt") as strg:
+        name = lst.readlines()
+        words = strg.readlines()
+        for i in range(len(name)):
+            # words[i] = literal_eval(words[i])
+            buttons.append(name[i])
+            # print(words[i])
+            cards = Deck(name[i], words[i])
+            buttons.append(cards)

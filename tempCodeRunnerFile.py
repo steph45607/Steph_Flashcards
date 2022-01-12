@@ -1,0 +1,1 @@
+    # words[i] = [n.strip() for n in words[i]]

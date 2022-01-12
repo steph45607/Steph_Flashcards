@@ -15,17 +15,19 @@ def init(root):
 
 def welcome(root):
     cleanPage(root)
-    box = Frame(root, bg = offWhite, width=800, height=400).pack(padx=100, pady=100)
+    box = Frame(root, bg = offWhite, width=800, height=400)
+    box.pack(padx=100, pady=100)
     title = Label(root, text="Welcome to Flashcard App",font=("Roboto", 45), bg=offWhite).place(relx=.5, rely=.5, anchor=CENTER)
     startBtn = Button(root,text="START", padx=70, pady=20, font=("Roboto", 25), command=lambda:cardLib(root), border=0).place(relx=.5, rely=.845, anchor=CENTER)
 
 def cardLib(root):
     cleanPage(root)
-    box2 = Frame(root,width=800, height=400).pack(pady=100, side=BOTTOM)
+    box2 = Frame(root,width=800, height=400)
+    box2.pack(pady=150, side=TOP)
+    loadCards(box2, root)
     title = Label(root, text = "Card Library", font=('Roboto', 45), bg= back).place(relx=.5, rely=.1, anchor=CENTER)
     hint = Label(root, text="Click card deck to learn").place(relx=.5, rely=0.2, anchor=CENTER)
     createBtn = Button(root, text = "+ Create", command=lambda: createName(root), border=0,).place(relx=.8, rely=.1, anchor=CENTER)
-    loadCards(box2)
     backBtn = Button(root, text = " < Back", command=lambda:welcome(root), border=0).place(relx=.2, rely=.1, anchor=CENTER)
 
 def createName(root):

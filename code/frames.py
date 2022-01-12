@@ -5,15 +5,16 @@ from methods import *
 
 # Colors
 offWhite = "#FAF9F6"
-btnColor = "#072227"
 back = "#35838B"
 
 def init(root):
+    # Initial framing
     global frame
     frame = Frame(root).pack()
     welcome(root)
 
 def welcome(root):
+    # Welcome page with a start button
     cleanPage(root)
     box = Frame(root, bg = offWhite, width=800, height=400)
     box.pack(padx=100, pady=100)
@@ -21,6 +22,7 @@ def welcome(root):
     startBtn = Button(root,text="START", padx=70, pady=20, font=("Roboto", 25), command=lambda:cardLib(root), border=0).place(relx=.5, rely=.845, anchor=CENTER)
 
 def cardLib(root):
+    # Card library page where user can access decks and create
     cleanPage(root)
     box2 = Frame(root)
     box2.pack(pady=80, side=TOP)
@@ -31,6 +33,7 @@ def cardLib(root):
     backBtn = Button(root, text = " < Back", command=lambda:welcome(root), border=0).place(relx=.2, rely=.1, anchor=CENTER)
 
 def createName(root):
+    # Create deck page, user can make manually by set name or use an existing file from device
     cleanPage(root)
     namePrompt = Label(root, text="Please enter card's title: ", font=("Roboto", 40), bg=back).place(relx=.5, rely=.2, anchor=CENTER)
     global cardName
@@ -41,6 +44,7 @@ def createName(root):
     backBtn = Button(root, text = " < Back", command=lambda:cardLib(root), border=0).place(relx=.2, rely=.1, anchor=CENTER)
 
 def createCards(root):
+    # Create cards page, user can input manually front and back / word and desc to cards
     cleanPage(root)
     global word
     word = StringVar()
@@ -60,6 +64,7 @@ def createCards(root):
     cancelBtn = Button(root, text = "Cancel", command=lambda: cancelCreate(root, cardName)).place(relx=.2, rely=.6, anchor=CENTER)
 
 def learnCards(root,list):
+    # Learn cards page, where user can "flip" card by clicking them
     cleanPage(root)
 
     global i

@@ -136,16 +136,29 @@ def readFile(file, frame):
 
 
 def loadCards(frame, frame2):
+    """
+    Method to load the cards in card library page
+    """
+    # List to store objects
     buttons = []
+    # Open file of card list and storage
     with open("storage/cardlist.txt") as lst, open("storage/cardstorage.txt") as strg:
+        # Access to read the lines
         name = lst.readlines()
         words = strg.readlines()
+        # Iterate through the file per line
         for i in range(len(name)):
+            # Use ast to make a string of list to a list
             words[i] = literal_eval(words[i])
+            # Object creation
             button = Deck(frame, name[i], words[i])
+            # Append object to buttons list
             buttons.append(button)
+    # Iterate through the buttons object list to create button
     for btn in buttons:
+        # Use method from class to create button
         btn.buttonMake(frame2, btn.getName(), btn.getList())
+ 
             
 def cleanPage(root):
     """

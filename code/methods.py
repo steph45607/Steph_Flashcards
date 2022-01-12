@@ -102,8 +102,7 @@ def deleteName(n):
 def cancelCreate(frame, name):
     """
     Method to delete a created deck of cards
-
-    """
+    """ 
     deleteName(name)
     cards = []
     frames.cardLib(frame)
@@ -143,13 +142,11 @@ def loadCards(frame, frame2):
         words = strg.readlines()
         for i in range(len(name)):
             words[i] = literal_eval(words[i])
-            button = Deck(name[i], words[i])
+            button = Deck(frame, name[i], words[i])
             buttons.append(button)
-    for this in buttons:
-        btn = Button(frame, text = this.getName(), command=lambda:frames.learnCards(frame2, this.getList())).pack(side=TOP, pady=5)
+    for btn in buttons:
+        btn.buttonMake(frame2, btn.getName(), btn.getList())
             
-
-
 def cleanPage(root):
     """
     Method to clean the window

@@ -22,8 +22,8 @@ def welcome(root):
 
 def cardLib(root):
     cleanPage(root)
-    box2 = Frame(root,width=800, height=400)
-    box2.pack(pady=150, side=TOP)
+    box2 = Frame(root)
+    box2.pack(pady=80, side=TOP)
     loadCards(box2, root)
     title = Label(root, text = "Card Library", font=('Roboto', 45), bg= back).place(relx=.5, rely=.1, anchor=CENTER)
     hint = Label(root, text="Click card deck to learn").place(relx=.5, rely=0.2, anchor=CENTER)

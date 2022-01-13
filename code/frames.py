@@ -7,11 +7,6 @@ from methods import *
 offWhite = "#FAF9F6"
 back = "#35838B"
 
-def init(root):
-    # Initial framing
-    global frame
-    frame = Frame(root).pack()
-    welcome(root)
 
 def welcome(root):
     # Welcome page with a start button
@@ -108,7 +103,7 @@ def learnCards(root,list):
             i -= 1
             show.set(str(list[i][0]))
 
-    cardDis = Button(root,textvariable=show, font=("Roboto",30),command = lambda: flip(show,list), height=10, width=30)
+    cardDis = Button(root,textvariable=show, wraplength=500,font=("Roboto",30),command = lambda: flip(show,list), height=10, width=30)
     cardDis.pack(pady=10)
 
     nextBtn = Button(root, text = "Next Word", command=lambda: nextWord(show,list))

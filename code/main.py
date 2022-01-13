@@ -28,7 +28,7 @@ def main():
     root.resizable(False, False)
 
     # To fill in the window with widgets from frames.py
-    frames.init(root)
+    frames.welcome(root)
 
     # To run the window
     root.mainloop()

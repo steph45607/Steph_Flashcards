@@ -1,5 +1,6 @@
-from methods import *
 from tkinter import *
+
+from methods import *
 from frames import *
 """
 Class to create object of deck card

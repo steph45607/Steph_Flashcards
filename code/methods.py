@@ -1,10 +1,11 @@
 from tkinter import *
-from frames import *
-from main import *
 from tkinter import filedialog, messagebox
 import os
-from factory import *
 from ast import *
+
+from frames import *
+from main import *
+from factory import *
 
 """
 Temporary list, easier to append
@@ -159,7 +160,7 @@ def loadCards(frame, frame2):
         # Use method from class to create button
         btn.buttonMake(frame2, btn.getName(), btn.getList())
  
-            
+          
 def cleanPage(root):
     """
     Method to clean the window

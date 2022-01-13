@@ -1,5 +1,5 @@
 from tkinter import *
-from tkinter import font
+
 from main import *
 from methods import *
 
@@ -29,7 +29,7 @@ def cardLib(root):
     loadCards(box2, root)
     title = Label(root, text = "Card Library", font=('Roboto', 45), bg= back).place(relx=.5, rely=.1, anchor=CENTER)
     hint = Label(root, text="Click card deck to learn").place(relx=.5, rely=0.2, anchor=CENTER)
-    createBtn = Button(root, text = "+ Create", command=lambda: createName(root), border=0,).place(relx=.8, rely=.1, anchor=CENTER)
+    createBtn = Button(root, text = "+ Create", command=lambda: createName(root), border=0).place(relx=.8, rely=.1, anchor=CENTER)
     backBtn = Button(root, text = " < Back", command=lambda:welcome(root), border=0).place(relx=.2, rely=.1, anchor=CENTER)
 
 def createName(root):

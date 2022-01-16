@@ -40,10 +40,14 @@ def createWithFile(frame):
     from user's existing file
     """
     # Get file from path
-    file = filedialog.askopenfilename(initialdir="/", title="Select existing file")
+    file = filedialog.askopenfilename(initialdir="/", title="Select existing file", filetypes=[("Text Files", "*.txt")])
     
-    # Call to run readFile method
-    readFile(file, frame)
+    if file == "":
+        # If the user cancel to add file, it will go back to the window and add nothing to the storage
+        frames.createName(frame)
+    else:
+        # Call to run readFile method
+        readFile(file, frame)
 
 
 def addCard(front, back, wordInput, descInput):

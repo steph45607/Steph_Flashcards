@@ -1,5 +1,4 @@
 from tkinter import *
-from urllib.response import addbase
 
 from main import *
 from methods import *
